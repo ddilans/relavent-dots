@@ -1,0 +1,20 @@
+XTerm*termName: xterm-256color
+XTerm*vt100.locale: true
+XTerm*saveLines: 16384
+XTerm*background: black
+XTerm*foreground: gray
+xterm*font: -*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*
+XTerm.vt100.translations: #override \n\
+  Ctrl <Key> minus: small-vt-font() \n\
+  Ctrl <Key> plus: larger-vt-font() \n\
+  Ctrl <Key> 0: set-vt-font(d) \n\
+  Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+  Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
+  <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
+  <Btn2UP>: insert-selection(PRIMARY)
+
+XTerm*selectToClipboard: true
+
+
+! double click url selection
+XTerm.charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
