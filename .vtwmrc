@@ -45,6 +45,11 @@ NoBorder
 	"VTWM *"
 }
 
+Sticky
+{
+	"stalonetray"
+}
+
 MoveDelta			3
 
 ResizeRegion			"NorthEast"
@@ -124,6 +129,8 @@ IconManagerDontShow
 	"VTWM *"
 	"xclock"
 	"xload"
+	"stalonetray"
+	"qmmp"
 }
 
 Pixmaps
@@ -239,16 +246,22 @@ Button1 = : virtual | desktop : f.movescreen
 #keybinds
 
 "q" = m4 : all : f.delete
-"m" = m4 : all : f.maximize
+"m" = m4 : all : f.fullzoom
 "n" = m4 : all : f.nail
 "Return" = m4 : all : f.exec "xterm&"
 "h" = m4 : all : f.panleft "100"
 "j" = m4 : all : f.pandown "100"
 "k" = m4 : all : f.panup "100"
 "l" = m4 : all : f.panright "100"
-"F11" = m4 : all : f.exec "playerctl previous&"
-"F12" = m4 : all : f.exec "playerctl next&"
-"Pause" = : all : f.exec "playerctl play-pause&"
+"s" = m4 : all : f.snugwindow
+"F1" = m4 : all : f.squeezeleft
+"F2" = m4 : all : f.squeezecenter
+"F3" = m4 : all : f.squeezeright
+"F11" = m4 : all : f.exec "qmmp --no-start --previous&"
+"F12" = m4 : all : f.exec "qmmp --no-start --next&"
+"Pause" = : all : f.exec "qmmp --no-start -t&"
+"Pause" = m4 : all : f.exec "notifyplaying&"
+"j" = m4 : all : f.exec "qmmp --no-start -j&"
 "Print" = : all : f.exec "scrot&"
 "l" = m4 : all : f.exec "xlock -mode random&"
 "1" = m4 : all : f.function "desk1"
@@ -274,6 +287,8 @@ Button1 = : virtual | desktop : f.movescreen
 
 "XF86AudioLowerVolume" = : all : f.exec "vsan.sh down&"
 "XF86AudioRaiseVolume" = : all : f.exec "vsan.sh up&"
+"XF86AudioLowerVolume" = s : all : f.exec "vsan.sh d&"
+"XF86AudioRaiseVolume" = s : all : f.exec "vsan.sh u&"
 "XF86AudioMute" = : all : f.exec "vsan.sh mute&"
 "XF86TouchpadToggle" = : all : f.exec "toggletouchpad.sh&"
 
@@ -306,7 +321,7 @@ menu "apps"
 	"xfe"			f.exec "xfe&"
 	"minecraft"		f.exec "minecraft&"
 	"invidio"		f.exec "invidio&"
-	"libreoffice"		f.exec "libreoffice&"
+	"openoffice"		f.exec "ooffice&"
 	"palemoon"		f.exec "palemoon -P default --new-instance&"
 	"stalonetray"		f.exec "stalonetray&"
 }
