@@ -31,6 +31,8 @@ export PATH="$HOME/bin:$HOME/script:$PATH"
 upower.sh&
 xbacklight -set 30
 compton&
+datedzen.sh&
+unclutter -root -not Minecraft -idle 5&
 #tint2&
 #$HOME/.fehbg&
 #exec /usr/bin/ewm

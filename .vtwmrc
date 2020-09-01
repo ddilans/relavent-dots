@@ -33,6 +33,8 @@ FixTransientVirtualGeometries
 
 ButtonColorIsFrame
 ShallowReliefWindowButton
+NoDefaultTitleButtons
+NoTitleHighlight
 
 WindowRing
 NoWindowRing
@@ -45,7 +47,11 @@ NoBorder
 	"VTWM *"
 }
 
-Sticky
+NailedDown
+{
+	"stalonetray"
+}
+NaileAbove
 {
 	"stalonetray"
 }
@@ -54,19 +60,19 @@ MoveDelta			3
 
 ResizeRegion			"NorthEast"
 
-FramePadding			2
+FramePadding			0
 ButtonIndent			-2
 TitlePadding			0
 TitleButtonBorderWidth		0
 
 BorderWidth			0
 BorderBevelWidth		0
-ButtonBevelWidth		1
+ButtonBevelWidth		0
 DoorBevelWidth			1
-IconBevelWidth			1
-IconManagerBevelWidth		1
-InfoBevelWidth			2
-MenuBevelWidth			2
+IconBevelWidth			0
+IconManagerBevelWidth		0
+InfoBevelWidth			0
+MenuBevelWidth			0
 TitleBevelWidth			0
 VirtualDesktopBevelWidth	0
 
@@ -100,6 +106,9 @@ IconManagerFont		"-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*"
 NoHighlight
 
 SqueezeTitle
+{
+	"*"	center	0	0
+}
 
 WarpCursor
 
@@ -142,28 +151,28 @@ Pixmaps
 
 Color
 {
-	DefaultBackground		"#20305a"
+	DefaultBackground		"#272727"
 	DefaultForeground		"gray85"
 	BorderColor			"grey70"
 	BorderTileBackground		"#20305a"
 	BorderTileForeground		"gray60"
 	DoorBackground			"#20305a"
 	DoorForeground			"gray85"
-	TitleBackground			"#20305a"
+	TitleBackground			"#272727"
 	TitleForeground			"gray85"
-	MenuBackground			"#20305a"
+	MenuBackground			"#272727"
 	MenuForeground			"#e5e5e5"
 	MenuTitleBackground		"#e5e5e5"
-	MenuTitleForeground		"#20305a"
-	IconBackground			"#20305a"
+	MenuTitleForeground		"#272727"
+	IconBackground			"#272727"
 	IconForeground			"gray85"
-	IconBorderColor			"gray85"
-	IconManagerBackground		"#20305a"
+	IconBorderColor			"#272727"
+	IconManagerBackground		"#272727"
 	IconManagerForeground		"gray85"
-	VirtualBackground		"#b3b3b3"
+	VirtualBackground		"#272727"
 	VirtualForeground		"#999999"
-	RealScreenBackground		"#999999"
-	DesktopDisplayBackground	"#e5e5e5"
+	RealScreenBackground		"#303030"
+	DesktopDisplayBackground	"gray85"
 	DesktopDisplayForeground	"black"
 }
 
@@ -210,16 +219,17 @@ Function "movedesk3" { f.nail f.panup "400" f.pandown "200" f.nail }
 Function "movedesk4" { f.nail f.panup "400" f.pandown "300" f.nail }
 Function "movedesk5" { f.nail f.pandown "400"  f.nail }
 
-LeftTitleButton ":xpm:darrow" = f.menu "arrange"
-RightTitleButton ":xpm:dot" = f.iconify
-RightTitleButton ":xpm:resize" = f.resize
+#LeftTitleButton ":xpm:darrow" = f.menu "arrange"
+#RightTitleButton ":xpm:dot" = f.iconify
+#RightTitleButton ":xpm:resize" = f.resize
 
 Button1 = : root : f.menu "apps"
-Button3 = : root : f.menu "main"
+Button2 = : root : f.menu "main"
+Button3 = : root : f.menu "apps2"
 
 Button1 = : title : f.move
-Button2 = : title : f.resize
-Button3 = : title : f.raiselower
+Button2 = : title : f.menu "basicops"
+Button3 = : title : f.resize
 
 Button1 = : frame : f.move
 Button2 = : frame : f.resize
@@ -319,11 +329,28 @@ menu "apps"
 	"xterm"			f.exec "xterm &"
 	"qmmp"			f.exec "qmmp&"
 	"xfe"			f.exec "xfe&"
-	"minecraft"		f.exec "minecraft&"
-	"invidio"		f.exec "invidio&"
+	"xcalc"			f.exec "xcalc&"
+	"xclipboard"		f.exec "xclipboard&"
 	"openoffice"		f.exec "ooffice&"
 	"palemoon"		f.exec "palemoon -P default --new-instance&"
 	"stalonetray"		f.exec "stalonetray&"
+	""			f.separator
+	"Restart"		f.restart
+	"Exit"			f.quit
+}
+
+menu "apps2"
+{
+	"minecraft"		f.exec "minecraft&"
+	"invidio"		f.exec "invidio&"
+	"xonotic"		f.exec "xonotic-glx&"
+	"steam"			f.exec "xterm -e steam&"
+	"discord"		f.exec "xterm -e Discord&"
+	"wpa_gui"		f.exec "wpa_gui&"
+	""			f.separator
+	"scrot"			f.exec "scrot&"
+	"scrot in 5"		f.exec "scrot -d 5&"
+	"scrot window"		f.exec "scrot -s&"
 }
 
 menu "ops"
@@ -342,6 +369,13 @@ menu "ops"
 	"Hide Desktop"		f.hidedesktopdisplay
 	""			f.separator
 	"Refresh"		f.refresh
+}
+
+menu "basicops"
+{
+	"Iconify"		f.iconify
+	"Full Zoom"		f.fullzoom
+	"Close"			f.delete
 }
 
 menu "arrange"
