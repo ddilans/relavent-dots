@@ -30,7 +30,8 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export PATH="$HOME/bin:$HOME/script:$PATH"
 upower.sh&
 xbacklight -set 30
-compton&
+(compton&$HOME/.fehbg)
+xbattmon&
 datedzen.sh&
 unclutter -root -not Minecraft -idle 5&
 #tint2&
