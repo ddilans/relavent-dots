@@ -28,15 +28,12 @@ fi
 
 export QT_QPA_PLATFORMTHEME=qt5ct
 export PATH="$HOME/bin:$HOME/script:$PATH"
-upower.sh&
-xbacklight -set 30
-(compton&$HOME/.fehbg)
-xbattmon&
-datedzen.sh&
-unclutter -root -not Minecraft -idle 5&
+#upower.sh&
+#xbacklight -set 30
+#datedzen.sh&
+#unclutter -root -not Minecraft -idle 5&
+#playingdzen.sh&
+#xbattmon&
 #tint2&
 #$HOME/.fehbg&
-#exec /usr/bin/ewm
-#exec bspwm
-#exec fvwm
-exec vtwm
+exec icewm-session

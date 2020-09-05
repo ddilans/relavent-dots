@@ -1,0 +1,3 @@
+upower.sh&
+xbacklight -set 30
+unclutter -root -not Minecraft -idle 5&

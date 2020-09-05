@@ -302,6 +302,9 @@ Button1 = : virtual | desktop : f.movescreen
 "XF86AudioMute" = : all : f.exec "vsan.sh mute&"
 "XF86TouchpadToggle" = : all : f.exec "toggletouchpad.sh&"
 
+"XF86MonBrightnessDown" = : all : f.exec "xbacklight -dec 5 -time 0&"
+"XF86MonBrightnessUp" = : all : f.exec "xbacklight -inc 5 -time 0&"
+
 "Tab" = m : all : f.warpring "next"
 "Tab" = m | s : all : f.warpring "prev"
 
@@ -319,20 +322,23 @@ menu "main"
 	"Arrange"		f.menu "arrange"
 	""			f.separator
 	".fehbg"		f.exec "$HOME/.fehbg"
-	"Fluxbox"		f.startwm "fluxbox"
+	"blackbox"		f.startwm "blackbox"
 	"Restart"		f.restart
+	"Restart Hard"		f.startwm "vtwm"
 	"Exit"			f.quit
 }
 
 menu "apps"
 {
 	"xterm"			f.exec "xterm &"
+	"wily"			f.exec "wily &"
 	"qmmp"			f.exec "qmmp&"
 	"xfe"			f.exec "xfe&"
 	"xcalc"			f.exec "xcalc&"
 	"xclipboard"		f.exec "xclipboard&"
 	"openoffice"		f.exec "ooffice&"
 	"palemoon"		f.exec "palemoon -P default --new-instance&"
+	"newsboat"		f.exec "xterm -e newsboat&"
 	"stalonetray"		f.exec "stalonetray&"
 	""			f.separator
 	"Restart"		f.restart
