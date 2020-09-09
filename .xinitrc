@@ -26,8 +26,8 @@ fi
 
 # start some nice programs
 
-export QT_QPA_PLATFORMTHEME=qt5ct
 export PATH="$HOME/bin:$HOME/script:$PATH"
+export QT_STYLE_OVERRIDE=kvantum
 #upower.sh&
 #xbacklight -set 30
 #datedzen.sh&
@@ -36,4 +36,5 @@ export PATH="$HOME/bin:$HOME/script:$PATH"
 #xbattmon&
 #tint2&
 #$HOME/.fehbg&
-exec icewm-session
+#exec icewm-session
+exec bspwm

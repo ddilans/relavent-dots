@@ -40,5 +40,7 @@ key "Super+F11"             qmmp --no-start --previous
 key "Super+F12"             qmmp --no-start --next
 key "Super+j"               qmmp --no-start -j
 key "Super+l"               xlock -mode random
+key "Super+p"               toggletouchpad.sh
+key "Super+Pause"           notifyplaying
 
 switchkey "Super+p"         icewm-menu-xrandr

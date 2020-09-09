@@ -233,7 +233,7 @@ ModSuperIsCtrlAlt=0 # 0/1
 # ArrangeWindowsOnScreenSizeChange=1 # 0/1
 
 #  Show task bar
-# ShowTaskBar=1 # 0/1
+ShowTaskBar=1 # 0/1
 
 #  Task bar at top of the screen
 TaskBarAtTop=1 # 0/1
