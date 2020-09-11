@@ -29,12 +29,16 @@ fi
 export PATH="$HOME/bin:$HOME/script:$PATH"
 export QT_STYLE_OVERRIDE=kvantum
 #upower.sh&
-#xbacklight -set 30
+xbacklight -set 30
 #datedzen.sh&
-#unclutter -root -not Minecraft -idle 5&
+unclutter -root -not Minecraft -idle 5&
 #playingdzen.sh&
 #xbattmon&
 #tint2&
-#$HOME/.fehbg&
+$HOME/.fehbg&
+#xbindkeys&
+lemonbar.sh&
+picom&
 #exec icewm-session
 exec bspwm
+#exec ewm
