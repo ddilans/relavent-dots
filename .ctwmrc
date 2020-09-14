@@ -1,0 +1,169 @@
+#
+# $XConsortium: system.twmrc,v 1.8 91/04/23 21:10:58 gildea Exp $
+#
+# Default twm configuration file; needs to be kept small to conserve string
+# space in systems whose compilers don't handle medium-sized strings.
+#
+# Sites should tailor this file, providing any extra title buttons, menus, etc.
+# that may be appropriate for their environment.  For example, if most of the
+# users were accustomed to uwm, the defaults could be set up not to decorate
+# any windows and to use meta-keys.
+#
+
+TitleFont	"-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*"
+ResizeFont	"-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*"
+MenuFont	"-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*"
+IconFont	"-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*"
+IconManagerFont	"-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*"
+ShowWorkSpaceManager			# start with workspace manager up
+UseThreeDMenus
+UseThreeDTitles
+UseThreeDIconManagers
+UseThreeDBorders
+UseThreeDWMap
+SunkFocusWindowTitle
+ThreeDBorderWidth 4
+
+WorkSpaceManagerGeometry        "60x240+0+0" 1
+WorkSpaces {
+    "One" {"#31363b" "white" "#31363b"}
+    "Two" {"#31363b" "white" "#31363b"}
+    "Three" {"#31363b" "white" "#31363b"}
+    "Four" {"#31363b" "white" "#31363b"}
+    "Five" {"#31363b" "white" "#31363b"}
+}
+
+Color
+{
+    BorderColor           "#31363b"
+    DefaultBackground     "#31363b"
+    DefaultForeground     "gray85"
+    BorderTileBackground  "#31363b" {
+    }
+    BorderTileForeground  "#31363b" {
+    }
+    TitleBackground       "#31363b" {
+    }
+    TitleForeground       "#eff0f1" {
+    }
+    MenuBackground        "#31363b"
+    MenuForeground        "#eff0f1"
+    MenuTitleBackground   "#31363b"
+    MenuTitleForeground   "#eff0f1"
+    IconBackground        "#31363b"
+    IconForeground        "#eff0f1"
+    IconBorderColor       "gray85"
+    IconManagerBackground "DeepSkyBlue1" {"Axe" "DeepSkyBlue3" "xload" "DeepSkyBlue2"}
+    IconManagerForeground "Black"
+    MapWindowBackground   "#31363b" {
+    }
+    MapWindowForeground   "White" {
+    }
+}
+
+IconManagerGeometry		"120x480-0+0" 1
+IconManagerDontShow {
+    "WorkSpaceManager"
+}
+
+NoTitle {                  # little programs that look like icons
+    "WorkSpaceManager"
+}
+
+#NoBorder {
+#	"WorkSpaceManager"
+#}
+SqueezeTitle
+NoTitleHighlight
+#
+# Define some useful functions for motion-based actions.
+#
+MoveDelta 3
+Function "move-or-lower" { f.move f.deltastop f.lower }
+Function "move-or-raise" { f.move f.deltastop f.raise }
+Function "move-or-iconify" { f.move f.deltastop f.iconify }
+
+#
+# Set some useful bindings.  Sort of uwm-ish, sort of simple-button-ish
+#
+Button1 =	: root		: f.menu "defops"
+Button2 =	: root		: f.menu "windowops"
+Button1 = m4    : all           : !"newxterm &"
+
+Button1 = m	: window|icon	: f.function "move-or-raise"
+Button2 = m	: window|icon	: f.iconify
+Button3 = m	: window|icon	: f.resize
+
+Button1 =	: title		: f.function "move-or-raise"
+Button1 = m	: title		: f.movetitlebar
+Button2 =	: title		: f.raiselower
+Button1 = m     : title		: f.movetitlebar
+
+Button1 =	: icon		: f.function "move-or-iconify"
+Button2 =	: icon		: f.iconify
+
+Button1 =	: iconmgr	: f.iconify
+Button2 =	: iconmgr	: f.iconify
+
+Button1 =	: frame		: f.resize
+Button1 = m	: frame		: f.move
+Button2 =	: frame		: f.raiselower
+
+"q" = m4 : window|icon : f.delete
+"p" = m4 : all : !"dmenu_run&"
+"F1" = m4 : all : !"pkill lemonbar.sh&"
+"F2" = m4 : all : !"lemonbar.sh&"
+"Pause" = : all : !"qmmp --no-start -t&"
+"F11" = m4 : all : !"qmmp --no-start --previous&"
+"F12" = m4 : all : !"qmmp --no-start --next&"
+"1" = m4 : all : f.gotoworkspace "One"
+"2" = m4 : all : f.gotoworkspace "Two"
+"3" = m4 : all : f.gotoworkspace "Three"
+"4" = m4 : all : f.gotoworkspace "Four"
+"5" = m4 : all : f.gotoworkspace "Five"
+"Up" = m4 : all : f.movetoprevworkspaceandfollow
+"Down" = m4 : all : f.movetonextworkspaceandfollow
+"r" = m : window|icon : f.raiselower
+"Print" = : all : !"shot &"
+"Return" = m4 : all : f.menu "defops"
+"Return" = m : all : f.menu "windowops"
+"XF86AudioRaiseVolume" = : all : !"amixer sset Master 5%+&"
+"XF86AudioLowerVolume" = : all : !"amixer sset Master 5%-&"
+"XF86AudioMute" = : all : !"amixer sset Master toggle&" 
+"XF86TouchpadToggle" = : all : !"toggletouchpad.sh&"
+"XF86MonBrightnessDown" = : all : !"xbacklight -dec 5 -time 0&"
+"XF86MonBrightnessUp" = : all : !"xbacklight -inc 5 -time 0&"
+#
+# And a menus with the usual things
+#
+menu "defops"
+{
+    "Twm"		f.title
+    "Xterm"		!"xterm&"
+    "qmmp"		!"qmmp&"
+    "palemoon"		!"palemoon&"
+    "IconMan"		f.showiconmgr
+    ""			f.nop
+    "Restart"		f.restart
+    "Exit"		f.quit
+}
+
+menu "windowops" {
+    "Windows"		f.title
+    "Occupy"		f.occupy
+    "Occupy All"	f.occupyall
+    "Iconify"		f.iconify
+    "Refresh"		f.refresh
+    "Vanish"		f.vanish
+    "Info"		f.identify
+    ""			f.separator
+    "Resize"		f.resize
+    "Move"		f.move
+    "Adopt Window"	f.adoptwindow
+    "Animate"		f.startanimation
+    "Don't animate"	f.stopanimation
+    ""			f.separator
+    "Send Delete"	f.delete
+    "Kill Window"	f.destroy
+    "Pin menu"		f.pin
+}

@@ -26,19 +26,8 @@ fi
 
 # start some nice programs
 
-export PATH="$HOME/bin:$HOME/script:$PATH"
-export QT_STYLE_OVERRIDE=kvantum
-#upower.sh&
-xbacklight -set 30
-#datedzen.sh&
-unclutter -root -not Minecraft -idle 5&
-#playingdzen.sh&
-#xbattmon&
-#tint2&
-$HOME/.fehbg&
-#xbindkeys&
-lemonbar.sh&
-picom&
-#exec icewm-session
-exec bspwm
-#exec ewm
+export PATH="$HOME/bin:$HOME/script:/usr/local/bin:$PATH"
+export QT_QPA_PLATFORMTHEME=qt5ct
+#exec compiz
+#exec bspwm
+exec ctwm

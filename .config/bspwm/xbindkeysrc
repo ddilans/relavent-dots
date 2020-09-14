@@ -83,6 +83,9 @@
 "bspc node -t tiled"
   Mod4+t
 
+"bspc node -t pseudo_tiled"
+  Mod4+shift+t
+
 "bspc node -t floating"
   Mod4+f
 
@@ -264,13 +267,22 @@
  Mod4+F12
 
 "xbacklight -dec 5 -time 0"
- XF85MonBrightnessDown
+ XF86MonBrightnessDown
 
 "xbacklight -inc 5 -time 0"
- XF85MonBrightnessUp
+ XF86MonBrightnessUp
 
 "dmenu_run"
  Mod4+p
+
+"xterm -e nnn"
+ Mod4+shift+Return
+
+"bspc node -i"
+ Mod4+i
+
+"bspc node 'any.leaf.!window' -k"
+ Mod4+shift+i
 
 ##################################
 # End of xbindkeys configuration #
