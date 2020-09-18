@@ -1,9 +1,12 @@
 XTerm*termName: xterm-256color
 XTerm*vt100.locale: true
 XTerm*saveLines: 16384
-XTerm*background: black
-XTerm*foreground: gray
-xterm*font: -*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*
+XTerm*background: #e5e5e5
+XTerm*foreground: black
+xterm*font: -*-fixed-medium-r-normal-*-13-*-*-*-*-*-*-*
+!XTerm*faceName: Misc Fixed:style=SemiCondensed
+XTerm*faceName: Misc Fixed:style=SemiCondensed:lang=ru
+XTerm*faceSize: 10
 XTerm.vt100.translations: #override \n\
   Ctrl <Key> minus: small-vt-font() \n\
   Ctrl <Key> plus: larger-vt-font() \n\

@@ -15,46 +15,42 @@ ResizeFont	"-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*"
 MenuFont	"-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*"
 IconFont	"-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*"
 IconManagerFont	"-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*"
-ShowWorkSpaceManager			# start with workspace manager up
-UseThreeDMenus
-UseThreeDTitles
 UseThreeDIconManagers
-UseThreeDBorders
 UseThreeDWMap
 SunkFocusWindowTitle
 ThreeDBorderWidth 4
 
 WorkSpaceManagerGeometry        "60x240+0+0" 1
 WorkSpaces {
-    "One" {"#31363b" "white" "#31363b"}
-    "Two" {"#31363b" "white" "#31363b"}
-    "Three" {"#31363b" "white" "#31363b"}
-    "Four" {"#31363b" "white" "#31363b"}
-    "Five" {"#31363b" "white" "#31363b"}
+    "One" {"#31363b"}
+    "Two" {"#31363b"}
+    "Three" {"#31363b"}
+    "Four" {"#31363b"}
+    "Five" {"#31363b"}
 }
 
 Color
 {
-    BorderColor           "#31363b"
+    BorderColor           "#AEC6CF"
     DefaultBackground     "#31363b"
     DefaultForeground     "gray85"
-    BorderTileBackground  "#31363b" {
+    BorderTileBackground  "#AEC6CF" {
     }
-    BorderTileForeground  "#31363b" {
+    BorderTileForeground  "#AEC6CF" {
     }
-    TitleBackground       "#31363b" {
+    TitleBackground       "#e5e5e5" {
     }
-    TitleForeground       "#eff0f1" {
+    TitleForeground       "#black" {
     }
-    MenuBackground        "#31363b"
-    MenuForeground        "#eff0f1"
-    MenuTitleBackground   "#31363b"
-    MenuTitleForeground   "#eff0f1"
+    MenuBackground        "#e5e5e5"
+    MenuForeground        "black"
+    MenuTitleBackground   "#e5e5e5"
+    MenuTitleForeground   "black"
     IconBackground        "#31363b"
     IconForeground        "#eff0f1"
     IconBorderColor       "gray85"
-    IconManagerBackground "DeepSkyBlue1" {"Axe" "DeepSkyBlue3" "xload" "DeepSkyBlue2"}
-    IconManagerForeground "Black"
+    IconManagerBackground "#31363b"
+    IconManagerForeground "#eff0f1"
     MapWindowBackground   "#31363b" {
     }
     MapWindowForeground   "White" {
@@ -66,13 +62,16 @@ IconManagerDontShow {
     "WorkSpaceManager"
 }
 
-NoTitle {                  # little programs that look like icons
-    "WorkSpaceManager"
-}
 
 #NoBorder {
 #	"WorkSpaceManager"
 #}
+
+NoTitle
+OccupyAll {
+	"xclock"
+}
+
 SqueezeTitle
 NoTitleHighlight
 #
@@ -97,7 +96,6 @@ Button3 = m	: window|icon	: f.resize
 Button1 =	: title		: f.function "move-or-raise"
 Button1 = m	: title		: f.movetitlebar
 Button2 =	: title		: f.raiselower
-Button1 = m     : title		: f.movetitlebar
 
 Button1 =	: icon		: f.function "move-or-iconify"
 Button2 =	: icon		: f.iconify
@@ -133,6 +131,9 @@ Button2 =	: frame		: f.raiselower
 "XF86TouchpadToggle" = : all : !"toggletouchpad.sh&"
 "XF86MonBrightnessDown" = : all : !"xbacklight -dec 5 -time 0&"
 "XF86MonBrightnessUp" = : all : !"xbacklight -inc 5 -time 0&"
+"m" = m4 : all : f.fullzoom
+"l" = m4 : all : !"xlock -mode random &"
+
 #
 # And a menus with the usual things
 #

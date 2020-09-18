@@ -28,6 +28,15 @@ fi
 
 export PATH="$HOME/bin:$HOME/script:/usr/local/bin:$PATH"
 export QT_QPA_PLATFORMTHEME=qt5ct
-#exec compiz
+#$HOME/.fehbg&
+#tint2& 
+#tint2 -c $HOME/.config/tint2/tint2rcright&
+#xclock -geometry 64x64-0+0
+#picom&
+#upower.sh&
+#unclutter -root -no Minecraft -idle 5&
+#xbacklight -set 30&
 #exec bspwm
-exec ctwm
+#exec ctwm
+#exec ewm
+exec fvwm
