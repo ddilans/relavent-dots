@@ -65,6 +65,10 @@ AddToFunc   StartFunction
 + I Module FvwmEvent EventNewDesk
 + I Module FvwmCommandS
 + I Exec exec $HOME/script/fvwm-update
++ I Exec exec picom
++ I Exec exec upower.sh
++ I Exec exec unclutter -root -no Minecraft -idle 5
++ I Exec exec xbacklight -set 20
 
 # Mouse Bindings Functions
 DestroyFunc RaiseMoveX
@@ -95,7 +99,7 @@ AddToFunc MoveToCurrent
 # and is used with the help menu.
 DestroyFunc ViewManPage
 AddToFunc   ViewManPage
-+ I Exec exec $[infostore.terminal] -g 80x40 \
++ I Exec exec xterm -g 120x40 \
   -n "Manual Page - $0" -T "Manual Page - $0" -e man "$0"
 
 # Function: SetBG $0
@@ -181,7 +185,7 @@ DesktopName 0 Main
 DesktopName 1 Desk1
 DesktopName 2 Desk2
 DesktopName 3 Desk3
-DesktopSize 3x2
+DesktopSize 3x3
 
 # EdgeScroll will move the view port between the Pages when the mouse
 # moves to the edge of the screen. This set the amount of distance to
@@ -214,7 +218,7 @@ DefaultFont "StringEncoding=UTF-8:xft:Misc Fixed:pixelsize=13:style=SemiCondense
 
 # Window Placement
 Style * PositionPlacement UnderMouse, GrabFocus, !UsePPosition
-iStyle feh PositionPlacement Center
+Style feh PositionPlacement Center
 
 # Sets all windows to OpaqueMove (vs a wired frame) and  windows will
 # snap to each other and the edge of the screen.
@@ -233,7 +237,7 @@ Style * WindowShadeScrolls, WindowShadeSteps 10
 IgnoreModifiers L25
 
 # Decor Styles
-Style * BorderWidth 2, HandleWidth 2, MWMButtons, FvwmBorder, FirmBorder, TitleAtLeft, DepressableBorder
+Style * BorderWidth 2, HandleWidth 2, TitleAtLeft, DepressableBorder
 Style * Colorset 1, HilightColorset 2
 Style * BorderColorset 3, HilightBorderColorset 4
 
@@ -251,11 +255,9 @@ Style ConfirmQuit !Title, PositionPlacement Center, WindowListSkip, Layer 6
 Style Fvwm* WindowListSkip
 Style RightPanel WindowListSkip
 Style TopPanel WindowListSkip
-Style mpv !Title
-Style xterm !Title
-Style stalonetray SloppyFocus, !NeverFocus, Title, FPLenient
+Style stalonetray Title
 
-BorderStyle -- HiddenHandles NoInset Sunk
+BorderStyle -- HiddenHandles NoInset
 
 #######
 # 3: Colorsets
@@ -286,13 +288,13 @@ Colorset 0  fg #ffffff, bg #003c3c, hi, sh
 #Colorset 1  fg #000000, bg #8f9f8f, hi, sh
 Colorset 1  fg #000000, bg #e5e5e5
 Colorset 2  fg #000000, bg #e5e5e5
-Colorset 3  fg #e5e5e5, bg #e5e5e5, sh, hi
-Colorset 4  fg #e5e5e5, bg #e5e5e5, sh, hi
-Colorset 5  fg black, bg #e5e5e5, hi, sh
+Colorset 3  fg #000000, bg #e5e5e5, sh, hi
+Colorset 4  fg #000000, bg #e5e5e5, sh, hi
+Colorset 5  fg #000000, bg #e5e5e5, hi,  sh
 Colorset 6  fg #e5e5e5, bg black, hi, sh
 Colorset 7  fg grey30, bg #ffffff, hi, sh
 Colorset 8  fg black, bg #e5e5e5, hi, sh
-Colorset 10 fg #000000, bg #e5e5e5, hi, sh
+Colorset 10 fg #000000, bg #e5e5e5, hi,  sh
 Colorset 11 fg #ffffff, bg #1a6e99, hi, sh
 #Colorset 12 fg #2d2d2d, bg #ffffff, hi, sh, TiledPixmap texturedark.xpm
 Colorset 12 fg #ffffff, bg #006c6c, hi, sh
@@ -302,8 +304,8 @@ Colorset 14 fg #000000, bg #6c91e9, hi, sh
 #######
 # 4: Menus
 ###########
-MenuStyle * MenuColorset 5, ActiveColorset 6, GreyedColorset 7, TitleColorset 8
-MenuStyle * Hilight3DOff, HilightBack, HilightTitleBack, SeparatorsLong
+MenuStyle * MenuColorset 5, ActiveColorset 6, GreyedColorset 7, TitleColorset 8, BorderWidth 1
+MenuStyle * Hilight3DOff, HilightBack, HilightTitleBack, SeparatorsLong, FvwmBorder
 MenuStyle * TrianglesSolid, TrianglesUseFore
 MenuStyle * ItemFormat "%|%3.1i%5.3l%5.3>%|"
 
@@ -314,7 +316,8 @@ MenuStyle * ItemFormat "%|%3.1i%5.3l%5.3>%|"
 DestroyMenu MenuFvwmRoot
 AddToMenu   MenuFvwmRoot "Fvwm" Title
 + "&XTerm%icons/terminal.png%" Exec exec $[infostore.terminal]
-+ "&Otter" Exec exec otter-browser
++ "&palemoon" Exec exec palemoon -P default --new-instance
++ "&sylpheed" Exec exec sylpheed
 + "&Programs%icons/programs.png%" Popup MenuPrograms
 + "" Nop
 + "M&an Pages%icons/help.png%" Popup MenuFvwmManPages
@@ -332,18 +335,41 @@ PipeRead "fvwm-menu-desktop -e"
 # When adding programs you don't need to use the Test (x foo)
 # lines as this is only to help make this menu portable.
 DestroyMenu MenuPrograms
-AddToMenu   MenuPrograms "Programs" Title
-Test (x palemoon) + "palemoon" Exec exec palemoon
-Test (x xfe) + "xfe" Exec exec xfe
-Test (x wily) + "wily" Exec exec wily
-Test (x gimp) + "gimp" Exec exec gimp
-Test (x minecraft) + "minecraft" Exec exec minecraft
-Test (x xonotic-glx) + "xonotic" Exec exec xonotic-glx
-Test (x newsboat) + "newsboat" Exec exec xterm -e newsboat
-Test (x alpine) + "alpine" Exec exec xterm -e alpine
-Test (x ooffice) + "openoffice" Exec exec ooffice
-Test (x discord) + "discord" Exec exec discord
-Test (x qmmp) + "qmmp" Exec exec qmmp
+AddToMenu   MenuPrograms
++ "&XTerm%icons/terminal.png%" Exec exec $[infostore.terminal]
++ "&palemoon" Exec exec palemoon
++ "&sylpheed" Exec exec sylpheed
++ "" Nop
++ "gimp" Exec exec gimp
++ "newsboat" Exec exec xterm -e newsboat
++ "openoffice" Exec exec ooffice
++ "qmmp" Exec exec qmmp
++ "Vidya" Popup Games
++ "wily" Exec exec wily
++ "wpa gui" Exec exec wpa_gui
++ "xfe" Exec exec xfe
++ "xfi" Exec exec xfi
++ "xfw" Exec exec xfw
++ "Screenshot" Exec exec shot
++ "" Nop
++ "Re&fresh%icons/refresh.png%" Refresh
++ "&Restart%icons/restart.png%" Restart
++ "&Quit%icons/quit.png%" Module FvwmScript FvwmScript-ConfirmQuit
+
+DestroyMenu Games
+AddToMenu Games
++ "etr" Exec exec etr
++ "fceux" Exec exec fceux
++ "halflife" Exec exec xterm -e halflife
++ "minecraft" Exec exec minecraft
++ "spelunky" Exec exec xterm -e spelunky
++ "steam" Exec exec xterm -e steam
++ "supertux" Exec exec supertux2
++ "syobon" Exec exec syobon
++ "xbomber" Exec exec xbomber
++ "xfreecell" Exec exec xfreecell
++ "xgalaga" Exec exec xgalaga
++ "xonotic" Exec exec xonotic-glx
 
 # Window Operations Menus
 DestroyMenu MenuWindowOps
@@ -496,12 +522,18 @@ Silent Key 3 A 4 GotoPage 2 0
 Silent Key 4 A 4 GotoPage 0 1
 Silent Key 5 A 4 GotoPage 1 1
 Silent Key 6 A 4 GotoPage 2 1
+Silent Key 7 A 4 GotoPage 0 2
+Silent Key 8 A 4 GotoPage 1 2
+Silent Key 9 A 4 GotoPage 2 2
 Silent Key 1 A 4S MoveToPage 0 0
 Silent Key 2 A 4S MoveToPage 1 0
 Silent Key 3 A 4S MoveToPage 2 0
 Silent Key 4 A 4S MoveToPage 0 1
 Silent Key 5 A 4S MoveToPage 1 1
 Silent Key 6 A 4S MoveToPage 2 1
+Silent Key 7 A 4S MoveToPage 0 2
+Silent Key 8 A 4S MoveToPage 1 2
+Silent Key 9 A 4S MoveToPage 2 2
 Silent Key Pause A A Exec exec qmmp --no-start -t
 Silent Key F12 A 4 Exec exec qmmp --no-start --next
 Silent Key F11 A 4 Exec exec qmmp --no-start --previous
@@ -534,14 +566,14 @@ Mouse 1	T    A RaiseMoveX Move Maximize
 Mouse 1	FS   A RaiseMove Resize
 Mouse 4	T    A WindowShade True
 Mouse 5	T    A WindowShade False
-Mouse 1	R    A Menu MenuFvwmRoot
+Mouse 1	R    A Menu MenuPrograms
 Mouse 2	R    A WindowList
 Mouse 3	R    A Menu MenuWindowOpsLong
 Mouse 1	I    A RaiseMoveX Move "Iconify off"
 Mouse 3	T    A Close
 Mouse 3 I    A Menu MenuIconOps
 
-Mouse 1 A    4 Menu MenuFvwmRoot
+Mouse 1 A    4 Menu MenuPrograms
 Mouse 3 A    4 Menu MenuWindowOpsLong
 Mouse 1 W    M RaiseMoveX Move
 Mouse 3 W    M RaiseMoveX Resize
@@ -615,21 +647,20 @@ DestroyModuleConfig RightPanel:*
 *RightPanel: Colorset 10
 *RightPanel: Rows $[vp.height]
 *RightPanel: Columns 120
-*RightPanel: Frame 2
-*RightPanel: (96x80, Swallow FvwmPager 'Module FvwmPager *', Frame 2)
-*RightPanel: (24x20, Id desk0, Title "0", Action (Mouse 1) GotoDesk 0 0, Colorset 11, ActiveColorset 12, Frame 2)
-*RightPanel: (24x20, Id desk1, Title "1", Action (Mouse 1) GotoDesk 0 1, ActiveColorset 12, Frame 2)
-*RightPanel: (24x20, Id desk2, Title "2", Action (Mouse 1) GotoDesk 0 2, ActiveColorset 12, Frame 2)
-*RightPanel: (24x20, Id desk3, Title "3", Action (Mouse 1) GotoDesk 0 3, ActiveColorset 12, Frame 2)
-*RightPanel: (120x20, Frame 2, Id playing, Font "-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*", Title "Nothing playing", Action (Mouse 1) "Exec exec playnotif.sh")
-*RightPanel: (24x20, Frame 2, Title "<<", Action (Mouse 1) "Exec exec playerctl previous")
-*RightPanel: (24x20, Frame 2, Title "<", Action (Mouse 1) "Exec exec playerctl position 10-")
-*RightPanel: (24x20, Id status, Frame 2, Title "||", Action (Mouse 1) "Exec exec playerctl play-pause")
-*RightPanel: (24x20, Frame 2, Title ">", Action (Mouse 1) "Exec exec playerctl position 10+")
-*RightPanel: (24x20, Frame 2, Title ">>", Action (Mouse 1) "Exec exec playerctl next")
-*RightPanel: (120x20, Frame 2, Id battery, Title "100+")
-*RightPanel: (120x45, Swallow DateTime 'Module FvwmScript FvwmScript-DateTime',\
-    Frame 2)
+*RightPanel: Frame 0
+*RightPanel: (96x80, Swallow FvwmPager 'Module FvwmPager *')
+*RightPanel: (24x20, Id desk0, Title "0", Action (Mouse 1) GotoDesk 0 0, Colorset 11, ActiveColorset 12)
+*RightPanel: (24x20, Id desk1, Title "1", Action (Mouse 1) GotoDesk 0 1, ActiveColorset 12)
+*RightPanel: (24x20, Id desk2, Title "2", Action (Mouse 1) GotoDesk 0 2, ActiveColorset 12)
+*RightPanel: (24x20, Id desk3, Title "3", Action (Mouse 1) GotoDesk 0 3, ActiveColorset 12)
+*RightPanel: (120x20, Id playing, Font "-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*", Title "Nothing playing", Action (Mouse 1) "Exec exec playnotif.sh")
+*RightPanel: (24x20, Title "<<", Action (Mouse 1) "Exec exec playerctl previous")
+*RightPanel: (24x20, Title "<", Action (Mouse 1) "Exec exec playerctl position 10-")
+*RightPanel: (24x20, Id status, Title "||", Action (Mouse 1) "Exec exec playerctl play-pause")
+*RightPanel: (24x20, Title ">", Action (Mouse 1) "Exec exec playerctl position 10+")
+*RightPanel: (24x20, Title ">>", Action (Mouse 1) "Exec exec playerctl next")
+*RightPanel: (120x20, Id battery, Title "100+")
+*RightPanel: (120x45, Swallow DateTime 'Module FvwmScript FvwmScript-DateTime')
 
 DestroyModuleConfig TopPanel:*
 *TopPanel: Geometry $[vp.width]x16+0+0
@@ -638,16 +669,16 @@ DestroyModuleConfig TopPanel:*
 *TopPanel: Columns 100
 *TopPanel: Frame 2
 *TopPanel: Font "StringEncoding=UTF-8:xft:Misc Fixed:pixelsize=13:style=SemiCondensed:lang=ru"
-*TopPanel: (4x2, Frame 2, Title "Programs", Action (Mouse 1) "Menu MenuPrograms")
-*TopPanel: (64x2, Frame 2, Left, Id title, Title "No window")
-*TopPanel: (4x2, Frame 2, Title "00:00", Id time)
-*TopPanel: (2x2, Frame 2, Title "30", Id brightness, Action (Mouse 1) "Exec exec xbacklight -time 0 -dec 5", Action (Mouse 3) "Exec exec xbacklight -time 0 -inc 5")
-*TopPanel: (2x2, Frame 2, Title "99-", Id battery, Action (Mouse 1) "Exec exec ")
-*TopPanel: (2x2, Frame 2, Title "<<", Action (Mouse 1) "Exec exec qmmp --no-start --previous")
-*TopPanel: (2x2, Frame 2, Title "<", Action (Mouse 1) "Exec exec qmmp --no-start --seek-bwd 10")
-*TopPanel: (20x2, Frame 2, Id playing, Title "Nothing playing", Action (Mouse 1) "Exec exec qmmp --no-start -t")
-*TopPanel: (2x2, Frame 2, Title ">", Action (Mouse 1) "Exec exec qmmp --no-start --seek-fwd 10")
-*TopPanel: (2x2, Frame 2, Title ">>", Action (Mouse 1) "Exec exec qmmp --no-start --next")
+*TopPanel: (4x2, Title "Programs", Action (Mouse 1) "Menu MenuPrograms Root 0 16p")
+*TopPanel: (64x2, Left, Id title, Title "No window")
+*TopPanel: (4x2, Title "00:00", Id time)
+*TopPanel: (2x2, Title "30", Id brightness, Action (Mouse 1) "Exec exec xbacklight -time 0 -dec 5", Action (Mouse 3) "Exec exec xbacklight -time 0 -inc 5")
+*TopPanel: (2x2, Title "99-", Id battery, Action (Mouse 1) "Exec exec ")
+*TopPanel: (2x2, Title "<<", Action (Mouse 1) "Exec exec qmmp --no-start --previous")
+*TopPanel: (2x2, Title "<", Action (Mouse 1) "Exec exec qmmp --no-start --seek-bwd 10")
+*TopPanel: (20x2, Id playing, Title "Nothing playing", Action (Mouse 1) "Exec exec qmmp --no-start -t")
+*TopPanel: (2x2, Title ">", Action (Mouse 1) "Exec exec qmmp --no-start --seek-fwd 10")
+*TopPanel: (2x2, Title ">>", Action (Mouse 1) "Exec exec qmmp --no-start --next")
 
 Colorset 30 fg black, bg #c6c3c6, RootTransparent buffer, Tint #efebef 65
 
