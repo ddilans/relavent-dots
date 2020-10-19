@@ -65,6 +65,7 @@ AddToFunc   StartFunction
 + I Module FvwmEvent EventNewDesk
 + I Module FvwmCommandS
 + I Exec exec $HOME/script/fvwm-update
+#+ I Exec exec lxqt-panel
 + I Exec exec picom
 + I Exec exec upower.sh
 + I Exec exec unclutter -root -no Minecraft -idle 5
@@ -237,7 +238,7 @@ Style * WindowShadeScrolls, WindowShadeSteps 10
 IgnoreModifiers L25
 
 # Decor Styles
-Style * BorderWidth 2, HandleWidth 2, TitleAtLeft, DepressableBorder
+Style * BorderWidth 1, HandleWidth 1, TitleAtLeft, #DepressableBorder
 Style * Colorset 1, HilightColorset 2
 Style * BorderColorset 3, HilightBorderColorset 4
 
@@ -256,8 +257,9 @@ Style Fvwm* WindowListSkip
 Style RightPanel WindowListSkip
 Style TopPanel WindowListSkip
 Style stalonetray Title
+Style lxqt-panel !Borders,!Handles
 
-BorderStyle -- HiddenHandles NoInset
+BorderStyle -- Flat #HiddenHandles NoInset
 
 #######
 # 3: Colorsets
@@ -288,12 +290,12 @@ Colorset 0  fg #ffffff, bg #003c3c, hi, sh
 #Colorset 1  fg #000000, bg #8f9f8f, hi, sh
 Colorset 1  fg #000000, bg #e5e5e5
 Colorset 2  fg #000000, bg #e5e5e5
-Colorset 3  fg #000000, bg #e5e5e5, sh, hi
-Colorset 4  fg #000000, bg #e5e5e5, sh, hi
-Colorset 5  fg #000000, bg #e5e5e5, hi,  sh
-Colorset 6  fg #e5e5e5, bg black, hi, sh
-Colorset 7  fg grey30, bg #ffffff, hi, sh
-Colorset 8  fg black, bg #e5e5e5, hi, sh
+Colorset 3  fg #000000, bg #000000, sh, hi
+Colorset 4  fg #000000, bg #000000, sh, hi
+Colorset 5  fg #000000, bg #e5e5e5
+Colorset 6  fg #e5e5e5, bg black
+Colorset 7  fg grey30, bg #ffffff
+Colorset 8  fg black, bg #e5e5e5
 Colorset 10 fg #000000, bg #e5e5e5, hi,  sh
 Colorset 11 fg #ffffff, bg #1a6e99, hi, sh
 #Colorset 12 fg #2d2d2d, bg #ffffff, hi, sh, TiledPixmap texturedark.xpm
@@ -305,7 +307,8 @@ Colorset 14 fg #000000, bg #6c91e9, hi, sh
 # 4: Menus
 ###########
 MenuStyle * MenuColorset 5, ActiveColorset 6, GreyedColorset 7, TitleColorset 8, BorderWidth 1
-MenuStyle * Hilight3DOff, HilightBack, HilightTitleBack, SeparatorsLong, FvwmBorder
+MenuStyle * Hilight3dOff, HilightBack, SeperatorsLong
+#MenuStyle * Hilight3DOff, HilightBack, HilightTitleBack, SeparatorsLong, FvwmBorder
 MenuStyle * TrianglesSolid, TrianglesUseFore
 MenuStyle * ItemFormat "%|%3.1i%5.3l%5.3>%|"
 
@@ -316,7 +319,7 @@ MenuStyle * ItemFormat "%|%3.1i%5.3l%5.3>%|"
 DestroyMenu MenuFvwmRoot
 AddToMenu   MenuFvwmRoot "Fvwm" Title
 + "&XTerm%icons/terminal.png%" Exec exec $[infostore.terminal]
-+ "&palemoon" Exec exec palemoon -P default --new-instance
++ "&browser" Exec exec qutebrowser
 + "&sylpheed" Exec exec sylpheed
 + "&Programs%icons/programs.png%" Popup MenuPrograms
 + "" Nop
@@ -337,9 +340,10 @@ PipeRead "fvwm-menu-desktop -e"
 DestroyMenu MenuPrograms
 AddToMenu   MenuPrograms
 + "&XTerm%icons/terminal.png%" Exec exec $[infostore.terminal]
-+ "&palemoon" Exec exec palemoon
++ "&browser" Exec exec qutebrowser
 + "&sylpheed" Exec exec sylpheed
 + "" Nop
++ "ahoviewer" Exec exec ahoviewer
 + "gimp" Exec exec gimp
 + "newsboat" Exec exec xterm -e newsboat
 + "openoffice" Exec exec ooffice
@@ -347,6 +351,7 @@ AddToMenu   MenuPrograms
 + "Vidya" Popup Games
 + "wily" Exec exec wily
 + "wpa gui" Exec exec wpa_gui
++ "wps" Exec exec wps
 + "xfe" Exec exec xfe
 + "xfi" Exec exec xfi
 + "xfw" Exec exec xfw
@@ -362,7 +367,9 @@ AddToMenu Games
 + "fceux" Exec exec fceux
 + "halflife" Exec exec xterm -e halflife
 + "minecraft" Exec exec minecraft
++ "slimerancher" Exec exec xterm -e slimerancher
 + "spelunky" Exec exec xterm -e spelunky
++ "higan" Exec exec higan
 + "steam" Exec exec xterm -e steam
 + "supertux" Exec exec supertux2
 + "syobon" Exec exec syobon
@@ -513,6 +520,7 @@ Silent Key F3 A C GotoDesk 0 2
 Silent Key F4 A C GotoDesk 0 3
 Silent Key Super_R A A Exec exec $[infostore.terminal]
 Silent Key Return A 4 Exec exec $[infostore.terminal]
+Silent Key g A 4 Exec exec xclip -selection clipboard $HOME/.gnulinux
 Silent Key m A 4 Maximize
 Silent Key q A 4 Close
 Silent Key i A 4 Iconify
@@ -667,7 +675,7 @@ DestroyModuleConfig TopPanel:*
 *TopPanel: Colorset 10
 *TopPanel: Rows 2
 *TopPanel: Columns 100
-*TopPanel: Frame 2
+*TopPanel: Frame 0
 *TopPanel: Font "StringEncoding=UTF-8:xft:Misc Fixed:pixelsize=13:style=SemiCondensed:lang=ru"
 *TopPanel: (4x2, Title "Programs", Action (Mouse 1) "Menu MenuPrograms Root 0 16p")
 *TopPanel: (64x2, Left, Id title, Title "No window")
