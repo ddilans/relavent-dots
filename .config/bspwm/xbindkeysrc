@@ -257,15 +257,6 @@
 "shot"
  Print
 
-"qmmp --no-start -t"
- Pause
-
-"qmmp --no-start --previous"
- Mod4+F11
-
-"qmmp --no-start --next"
- Mod4+F12
-
 "xbacklight -dec 5 -time 0"
  XF86MonBrightnessDown
 
