@@ -284,21 +284,6 @@
 "bspc node 'any.leaf.!window' -k"
  Mod4+shift+i
 
-"bspc node -p west"
- Mod4+Control+h
-
-"bspc node -p south"
- Mod4+Control+j
-
-"bspc node -p north"
- Mod4+Control+k
-
-"bspc node -p east"
- Mod4+Control+l
-
-"bspc node -p cancel"
- Mod4+Control+semicolon
-
 "bspc rule -a *:* state=floating"
  Mod4+Shift+f
 
@@ -307,6 +292,15 @@
 
 "bspc rule -r tail"
  Mod4+Control+Shift+f
+
+"mpc next"
+ Mod4+F12
+
+"mpc prev"
+ Mod4+F11
+
+"mpc toggle"
+ Pause
 
 ##################################
 # End of xbindkeys configuration #

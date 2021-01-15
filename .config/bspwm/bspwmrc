@@ -1,17 +1,17 @@
 #! /bin/sh
-
 bspc config ignore_ewmh_struts true
-xbindkeys -f $HOME/.config/bspwm/xbindkeysrc&
-$HOME/.fehbg
-lemonbar.sh&
-#tint2&
-picom&
-upower.sh&
+xrandr --output HDMI2 --mode 1920x1080 --rate 60.00 --output eDP1 --mode 1920x1080 --rate 60.05 --left-of HDMI2
+pgrep xbindkeys || xbindkeys -f $HOME/.config/bspwm/xbindkeysrc&
+#$HOME/.fehbg
+hsetroot -solid '#31363b'
+pgrep picom || picom&
+pgrep upower.sh || upower.sh&
+pgrep mpd || mpd&
 xbacklight -set 30
-unclutter -root -not Minecraft -idle 5&
-stalonetray&
+xset m 20/10 4
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+bspc monitor eDP1 -d I II III IV V 
+bspc monitor HDMI2 -d VI VII VIII IX X
 
 bspc config focused_border_color "#000000"
 bspc config normal_border_color "#e5e5e5"
@@ -27,3 +27,4 @@ bspc config pointer_modifier "mod1"
 bspc config top_padding 0
 bspc config border_radius 10
 bspc rule -a feh state=floating
+lemonbar.sh

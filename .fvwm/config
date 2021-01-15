@@ -211,7 +211,7 @@ MoveThreshold 3
 
 # Sets the focus style to SloppyFocus and a mouse click
 # in a window will Raise it.
-Style * SloppyFocus, MouseFocusClickRaises
+Style * SloppyFocus, MouseFocus
 
 # Default Font
 #DefaultFont "xft:Sans:Bold:size=8:antialias=True"
@@ -367,12 +367,14 @@ AddToMenu Games
 + "fceux" Exec exec fceux
 + "halflife" Exec exec xterm -e halflife
 + "minecraft" Exec exec minecraft
++ "minetest" Exec exec minetest
 + "slimerancher" Exec exec xterm -e slimerancher
 + "spelunky" Exec exec xterm -e spelunky
 + "higan" Exec exec higan
 + "steam" Exec exec xterm -e steam
 + "supertux" Exec exec supertux2
 + "syobon" Exec exec syobon
++ "technic" Exec exec technic
 + "xbomber" Exec exec xbomber
 + "xfreecell" Exec exec xfreecell
 + "xgalaga" Exec exec xgalaga
@@ -545,6 +547,10 @@ Silent Key 9 A 4S MoveToPage 2 2
 Silent Key Pause A A Exec exec qmmp --no-start -t
 Silent Key F12 A 4 Exec exec qmmp --no-start --next
 Silent Key F11 A 4 Exec exec qmmp --no-start --previous
+Silent Key F1 A 4 Exec exec sxivdragon "$HOME/pictures"
+Silent Key F2 A 4 Exec exec sxivdragon "$HOME/memes"
+Silent Key F3 A 4 Exec exec sxivdragon "$HOME/memes/pepes"
+Silent Key F4 A 4 Exec exec sxivdragon "$HOME/memes/bait"
 Silent Key XF86AudioRaiseVolume A A Exec exec amixer sset Master 5%+
 Silent Key XF86AudioLowerVolume A A Exec exec amixer sset Master 5%-
 Silent Key XF86MonBrightnessDown A A Exec exec xbacklight -time 0 -dec 5
