@@ -206,7 +206,7 @@
 "bspc node -g hidden"
  Mod4+a
 
-"bspc node any.hidden -g hidden=off"
+"bspc node any.local.hidden -g hidden=off"
  Mod4+shift+a
 
 "pkill lemonbar.sh"
@@ -250,6 +250,15 @@
 
 "amixer sset Master toggle"
  XF86AudioMute
+
+"amixer sset Master 5%-"
+ Mod4+shift+F11
+
+"amixer sset Master 5%+"
+ Mod4+shift+F12
+
+"amixer sset Master toggle"
+ Mod4+shift+m
 
 "toggletouchpad.sh"
  XF86TouchpadToggle
