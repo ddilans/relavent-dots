@@ -1,0 +1,3 @@
+#!/bin/sh
+proxy="shuf -n1 $HOME/proxies.txt"
+echo "set content.proxy http://$proxy" >> "$QUTE_FIFO"
