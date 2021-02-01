@@ -7,6 +7,7 @@ hsetroot -solid '#31363b'
 pgrep picom || picom&
 pgrep upower.sh || upower.sh&
 pgrep mpd || mpd&
+pgrep unclutter || unclutter -root -not Minecraft -idle 5&
 xbacklight -set 30
 xset m 20/10 4
 

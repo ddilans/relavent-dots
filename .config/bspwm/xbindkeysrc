@@ -227,6 +227,9 @@
 "bspc config window_gap 0"
  Mod4+F6
 
+"xinput_dmenu.sh"
+ Mod4+z
+
 "bspc node @parent -R 90"
  Mod4+r
 
