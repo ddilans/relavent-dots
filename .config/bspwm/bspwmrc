@@ -27,4 +27,5 @@ bspc config pointer_modifier "mod1"
 bspc config top_padding 0
 bspc config border_radius 10
 bspc rule -a feh state=floating
-lemonbar.sh
+lemonbar.sh&
+lemonbar2.sh

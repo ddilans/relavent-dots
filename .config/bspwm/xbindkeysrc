@@ -215,10 +215,10 @@
 "lemonbar.sh"
  Mod4+F2
 
-"bspc config border_radius 10"
+"pkill lemonbar2.sh"
  Mod4+F3
 
-"bspc config border_radius 0"
+"lemonbar2.sh"
  Mod4+F4
 
 "bspc config window_gap 18"
