@@ -116,6 +116,18 @@
 "bspc node -s east"
  Mod4+shift+l
 
+"bspc node -p west"
+ Mod4+control+alt+h
+
+"bspc node -p south"
+ Mod4+control+alt+j
+
+"bspc node -p north"
+ Mod4+control+alt+k
+
+"bspc node -p east"
+ Mod4+control+alt+l
+
 "bspc node -f next.local"
  Mod1+Tab
 
@@ -229,6 +241,9 @@
 
 "xinput_dmenu.sh"
  Mod4+z
+
+"sh -c 'pkill xbindkeys;xbindkeys -f $HOME/.config/bspwm/xbindkeysrc'"
+ Mod4+x
 
 "bspc node @parent -R 90"
  Mod4+r
