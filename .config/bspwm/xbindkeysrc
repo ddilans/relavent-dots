@@ -89,6 +89,9 @@
 "bspc node -t floating"
   Mod4+f
 
+"bspc rule -a \* -o state=floating"
+  Mod4+control+f
+
 "bspc node -g sticky"
   Mod4+s
 
@@ -242,7 +245,7 @@
 "xinput_dmenu.sh"
  Mod4+z
 
-"sh -c 'pkill xbindkeys;xbindkeys -f $HOME/.config/bspwm/xbindkeysrc'"
+"sh -c 'pkill xbindkeys;xbindkeys -f $HOME/.config/bspwm/xbindkeysrc'&"
  Mod4+x
 
 "bspc node @parent -R 90"

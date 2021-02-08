@@ -1,6 +1,6 @@
 #!/bin/sh
 while true; do
-echo -n "%{r}$(bat.sh)%$(charging.sh) "
+echo -n "%{r}$(bat.sh)%$(charging.sh) " || exit 1
 echo -n "%{c}$(ram.sh)"
 echo "%{l}%{A1:mpc toggle:}%{A3:mpc next:}$(mpc current)%{A}%{A} $(mpc | awk 'NR == 2 { print $3; }')"
 sleep 1;
