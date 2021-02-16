@@ -227,13 +227,13 @@
 "pkill lemonbar.sh"
  Mod4+F1
 
-"lemonbar.sh"
+"lemonbar.sh 1881x16+21+0"
  Mod4+F2
 
 "pkill lemonbar2.sh"
  Mod4+F3
 
-"lemonbar2.sh"
+"lemonbar2.sh 1881x16+21+1064"
  Mod4+F4
 
 "bspc config window_gap 18"
@@ -247,6 +247,9 @@
 
 "sh -c 'pkill xbindkeys;xbindkeys -f $HOME/.config/bspwm/xbindkeysrc'&"
  Mod4+x
+
+"imagechoose.sh"
+ Mod4+c
 
 "bspc node @parent -R 90"
  Mod4+r
