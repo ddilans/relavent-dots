@@ -6,8 +6,11 @@ alias s="/usr/bin/emerge --search"
 alias ..="cd .."
 alias minidlna="doas minidlnad -d -rR"
 alias etcmerge="doas etc-update --automode -3"
+alias screenkey="screenkey --no-systray"
 alias mv="mv -i"
 alias sxiv="sxiv -ao"
+alias g="grep -ri"
+alias f="find . | grep -i"
 PS1='`basename "$(pwd)"`> '
 #binds are for xterm
 bind  '"":backward-kill-word' #ctrl-backspace

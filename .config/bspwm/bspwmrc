@@ -29,5 +29,6 @@ bspc config top_padding 0
 bspc config border_radius 10
 bspc rule -a feh state=floating
 bspc rule -a Qemu-system-x86_64 state=floating rectangle=720x424+600+328
-lemonbar.sh 1881x16+1941+0 &
-lemonbar2.sh 1881x16+1941+1064 
+
+lemonbar.sh&
+lemonbar2.sh

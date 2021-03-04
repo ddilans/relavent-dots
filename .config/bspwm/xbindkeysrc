@@ -227,13 +227,13 @@
 "pkill lemonbar.sh"
  Mod4+F1
 
-"lemonbar.sh 1881x16+21+0"
+"lemonbar.sh"
  Mod4+F2
 
 "pkill lemonbar2.sh"
  Mod4+F3
 
-"lemonbar2.sh 1881x16+21+1064"
+"lemonbar2.sh"
  Mod4+F4
 
 "bspc config window_gap 18"
@@ -287,8 +287,11 @@
 "toggletouchpad.sh"
  XF86TouchpadToggle
 
-"shot"
+"sh -c 'maim -u -g 1920x1080+1920+0 $(date +%F-%s).png'"
  Print
+
+"sh -c 'maim -u $(date +%F-%s).png'"
+ Mod4+Print
 
 "xbacklight -dec 5 -time 0"
  XF86MonBrightnessDown
@@ -325,6 +328,18 @@
 
 "mpc toggle"
  Pause
+
+"jumpapp qutebrowser"
+ Mod4+shift+b
+
+"sh -c 'xdotool windowactivate $(jumpapp -L steam | grep \'0x[^ ]*\' | cut -d\' \' -f 1)'"
+ Mod4+shift+s
+
+"jumpapp gimp"
+ Mod4+shift+g
+
+"xmag"
+ Mod4+shift+x
 
 ##################################
 # End of xbindkeys configuration #
