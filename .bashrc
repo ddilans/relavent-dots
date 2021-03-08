@@ -11,6 +11,7 @@ alias mv="mv -i"
 alias sxiv="sxiv -ao"
 alias g="grep -ri"
 alias f="find . | grep -i"
+alias tordl="curl --socks5-hostname localhost:9050 -O"
 PS1='`basename "$(pwd)"`> '
 #binds are for xterm
 bind  '"":backward-kill-word' #ctrl-backspace

@@ -131,9 +131,6 @@
 "bspc node -p east"
  Mod4+control+alt+l
 
-"bspc node -f next.local"
- Mod1+Tab
-
 "bspc desktop -f ^1"
  Mod4+1
 
@@ -224,17 +221,11 @@
 "bspc node any.local.hidden -g hidden=off"
  Mod4+shift+a
 
-"pkill lemonbar.sh"
+"pkill tint2"
  Mod4+F1
 
-"lemonbar.sh"
+"tint2"
  Mod4+F2
-
-"pkill lemonbar2.sh"
- Mod4+F3
-
-"lemonbar2.sh"
- Mod4+F4
 
 "bspc config window_gap 18"
  Mod4+F5

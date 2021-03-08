@@ -802,7 +802,7 @@ c.completion.web_history.max_items = 0
 
 ## Enable JavaScript.
 ## Type: Bool
-# c.content.javascript.enabled = True
+c.content.javascript.enabled = False
 
 ## Log levels to use for JavaScript console logging messages. When a
 ## JavaScript message with the level given in the dictionary key is
@@ -1977,6 +1977,7 @@ config.bind('J', 'tab-prev')
 # config.bind('tPh', 'config-cycle -p -u *://{url:host}/* content.plugins ;; reload')
 # config.bind('tPu', 'config-cycle -p -u {url} content.plugins ;; reload')
 # config.bind('tSH', 'config-cycle -p -u *://*.{url:host}/* content.javascript.enabled ;; reload')
+config.bind(',j', 'config-cycle -p -u *://*.{url:host}/* content.javascript.enabled ;; reload')
 # config.bind('tSh', 'config-cycle -p -u *://{url:host}/* content.javascript.enabled ;; reload')
 # config.bind('tSu', 'config-cycle -p -u {url} content.javascript.enabled ;; reload')
 # config.bind('tcH', 'config-cycle -p -t -u *://*.{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
